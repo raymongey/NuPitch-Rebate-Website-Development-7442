@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import React, {useState, useEffect} from 'react';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
+import {motion} from 'framer-motion';
 import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
 
-const { FiMenu, FiX } = FiIcons;
+const {FiMenu, FiX} = FiIcons;
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,19 +16,18 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const menuItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'How It Works', href: '#how-it-works' },
-    { name: 'Features', href: '#features' },
-    { name: 'Who Uses It', href: '#who-uses' },
-    { name: 'FAQs', href: '#faqs' },
-    { name: 'About', href: '#about' },
-    { name: 'Contact', href: '#contact' },
+    {name: 'Home', href: '#home'},
+    {name: 'How It Works', href: '#how-it-works'},
+    {name: 'Features', href: '#features'},
+    {name: 'Who Uses It', href: '#who-uses'},
+    {name: 'FAQs', href: '#faqs'},
+    {name: 'About', href: '#about'},
+    {name: 'Contact', href: '#contact'},
   ];
 
   const scrollToSection = (href) => {
@@ -39,13 +38,13 @@ const Header = () => {
       setTimeout(() => {
         const element = document.querySelector(href);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          element.scrollIntoView({behavior: 'smooth'});
         }
       }, 100);
     } else {
       const element = document.querySelector(href);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({behavior: 'smooth'});
       }
     }
     setIsMenuOpen(false);
@@ -58,21 +57,21 @@ const Header = () => {
       setTimeout(() => {
         const element = document.querySelector('#demo');
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          element.scrollIntoView({behavior: 'smooth'});
         }
       }, 100);
     } else {
       const element = document.querySelector('#demo');
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({behavior: 'smooth'});
       }
     }
   };
 
   return (
     <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
+      initial={{y: -100}}
+      animate={{y: 0}}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? 'bg-navy/95 backdrop-blur-lg shadow-lg' : 'bg-transparent'
       }`}
@@ -81,9 +80,11 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-accent to-blue-500 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-lg">N</span>
-            </div>
+            <img 
+              src="https://github.com/raymongey/NuPitch-Rebate-Website-Development-7442/blob/a5301c25e15c169611beca5b90b7d228dcd329f0/public/nupitch_logo_ol-Centered_001.png?raw=true"
+              alt="NuPitch"
+              className="w-10 h-10 object-contain"
+            />
             <span className="font-bold text-xl text-white">NuPitch</span>
           </Link>
 
@@ -122,7 +123,7 @@ const Header = () => {
         {/* Mobile Menu */}
         <motion.div
           initial={false}
-          animate={{ height: isMenuOpen ? 'auto' : 0 }}
+          animate={{height: isMenuOpen ? 'auto' : 0}}
           className="md:hidden overflow-hidden mobile-nav"
         >
           <div className="px-2 pt-2 pb-3 space-y-1">

@@ -1,13 +1,13 @@
-import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React, {useRef} from 'react';
+import {motion, useInView} from 'framer-motion';
 import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../../common/SafeIcon';
 
-const { FiCheck, FiTarget, FiBrain, FiAlertCircle, FiTrendingUp, FiShield } = FiIcons;
+const {FiCheck, FiTarget, FiBrain, FiAlertCircle, FiTrendingUp, FiShield} = FiIcons;
 
 const WhyChooseSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, threshold: 0.1 });
+  const isInView = useInView(ref, {once: true, threshold: 0.1});
 
   const benefits = [
     {
@@ -38,7 +38,7 @@ const WhyChooseSection = () => {
     {
       icon: FiShield,
       title: 'Privacy & Security First',
-      description: 'Enterprise-grade security with GDPR compliance. Your sensitive data is always protected.'
+      description: 'Enterprise-grade security with GDPR compliance. Your sensitive data is protected.'
     }
   ];
 
@@ -47,9 +47,9 @@ const WhyChooseSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          initial={{opacity: 0, y: 30}}
+          animate={isInView ? {opacity: 1, y: 0} : {}}
+          transition={{duration: 0.8}}
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
@@ -61,9 +61,9 @@ const WhyChooseSection = () => {
           {benefits.map((benefit, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
+              initial={{opacity: 0, y: 30}}
+              animate={isInView ? {opacity: 1, y: 0} : {}}
+              transition={{duration: 0.8, delay: index * 0.1}}
               className="feature-card bg-navy/50 backdrop-blur-lg p-8 rounded-2xl border border-gray-700"
             >
               <div className="w-16 h-16 bg-gradient-to-br from-blue-accent to-blue-500 rounded-2xl flex items-center justify-center mb-6">
@@ -76,9 +76,9 @@ const WhyChooseSection = () => {
                 {benefit.description}
               </p>
               <motion.div
-                initial={{ scaleX: 0 }}
-                animate={isInView ? { scaleX: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                initial={{scaleX: 0}}
+                animate={isInView ? {scaleX: 1} : {}}
+                transition={{duration: 0.5, delay: 0.5 + index * 0.1}}
                 className="h-1 bg-gradient-to-r from-blue-accent to-blue-500 rounded-full mt-6 origin-left"
               />
             </motion.div>

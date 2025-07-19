@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
 
-const { FiLinkedin, FiMail, FiInstagram, FiTwitter, FiFacebook } = FiIcons;
+const {FiLinkedin, FiMail, FiInstagram, FiTwitter, FiFacebook} = FiIcons;
 
 const Footer = () => {
   return (
@@ -13,9 +13,11 @@ const Footer = () => {
           {/* Logo and Tagline */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-accent to-blue-500 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-lg">N</span>
-              </div>
+              <img 
+                src="https://github.com/raymongey/NuPitch-Rebate-Website-Development-7442/blob/a5301c25e15c169611beca5b90b7d228dcd329f0/public/nupitch_logo_ol-Centered_001.png?raw=true"
+                alt="NuPitch"
+                className="w-10 h-10 object-contain"
+              />
               <span className="font-bold text-xl">NuPitch Technologies</span>
             </div>
             <p className="text-gray-400 text-lg mb-4">
@@ -47,41 +49,41 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Connect</h4>
             <div className="space-y-3">
-              <a 
-                href="mailto:info@usenupitch.com" 
+              <a
+                href="mailto:info@usenupitch.com"
                 className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors"
               >
                 <SafeIcon icon={FiMail} className="w-4 h-4" />
                 <span>info@usenupitch.com</span>
               </a>
               <div className="flex space-x-3 pt-2">
-                <a 
-                  href="https://www.linkedin.com/company/nupitch/" 
-                  target="_blank" 
+                <a
+                  href="https://www.linkedin.com/company/nupitch/"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   <SafeIcon icon={FiLinkedin} className="w-5 h-5" />
                 </a>
-                <a 
-                  href="https://www.instagram.com/usenupitch/" 
-                  target="_blank" 
+                <a
+                  href="https://www.instagram.com/usenupitch/"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   <SafeIcon icon={FiInstagram} className="w-5 h-5" />
                 </a>
-                <a 
-                  href="https://x.com/usenupitch" 
-                  target="_blank" 
+                <a
+                  href="https://x.com/usenupitch"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   <SafeIcon icon={FiTwitter} className="w-5 h-5" />
                 </a>
-                <a 
-                  href="https://www.facebook.com/usenupitch" 
-                  target="_blank" 
+                <a
+                  href="https://www.facebook.com/usenupitch"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
