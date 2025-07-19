@@ -63,38 +63,21 @@ const HowItWorksSection = () => {
               <div className="absolute -top-4 -left-4 w-8 h-8 bg-blue-accent text-white rounded-full flex items-center justify-center font-bold text-sm z-10">
                 {index + 1}
               </div>
-
               {/* Icon */}
               <div className="w-20 h-20 bg-gradient-to-br from-blue-accent to-blue-500 rounded-3xl flex items-center justify-center mb-6 mx-auto">
                 <SafeIcon icon={step.icon} className="w-10 h-10 text-white" />
               </div>
-
               {/* Content */}
               <h3 className="text-xl font-semibold mb-4 text-white">
                 {step.title}
               </h3>
-              
               <p className="text-gray-300 leading-relaxed">
                 {step.description}
               </p>
             </motion.div>
           ))}
-
-          {/* Connector Lines - positioned between steps */}
-          {[0, 1, 2].map((index) => (
-            <motion.div
-              key={`line-${index}`}
-              initial={{ scaleX: 0 }}
-              animate={isInView ? { scaleX: 1 } : {}}
-              transition={{ duration: 0.8, delay: 0.5 + index * 0.2 }}
-              className="hidden lg:block absolute top-10 h-0.5 bg-gradient-to-r from-blue-accent to-blue-500 origin-left"
-              style={{
-                left: `${25 + (index * 25)}%`,
-                width: '25%',
-                transform: 'translateX(-50%)'
-              }}
-            />
-          ))}
+          
+          {/* Removed the connector lines as requested */}
         </div>
       </div>
     </section>

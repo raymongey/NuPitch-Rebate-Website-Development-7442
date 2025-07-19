@@ -42,11 +42,9 @@ const CTASection = () => {
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
             Ready to Unlock <span className="gradient-text">More Funding?</span>
           </h2>
-          
           <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto">
             Join the revolution in production financing and start maximizing your incentives today
           </p>
-
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
             <motion.button
               onClick={scrollToWaitlist}
@@ -56,7 +54,6 @@ const CTASection = () => {
             >
               Join Waitlist
             </motion.button>
-            
             <motion.button
               onClick={scrollToDemo}
               whileHover={{ scale: 1.05 }}
@@ -66,7 +63,6 @@ const CTASection = () => {
               Book a Demo
             </motion.button>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {benefits.map((benefit, index) => (
               <motion.div

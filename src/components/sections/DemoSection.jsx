@@ -1,9 +1,24 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 const DemoSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, threshold: 0.1 });
+  
+  useEffect(() => {
+    // Create script element for TidyCal
+    const script = document.createElement('script');
+    script.src = 'https://asset-tidycal.b-cdn.net/js/embed.js';
+    script.async = true;
+    
+    // Append script to document body
+    document.body.appendChild(script);
+    
+    // Cleanup function to remove script when component unmounts
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   return (
     <section id="demo" className="py-20 bg-black">
@@ -30,7 +45,6 @@ const DemoSection = () => {
           className="bg-navy/50 backdrop-blur-lg p-8 rounded-2xl border border-gray-700"
         >
           <div className="tidycal-embed" data-path="nupitch/rebate"></div>
-          <script src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
         </motion.div>
       </div>
     </section>

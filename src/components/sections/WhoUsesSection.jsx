@@ -28,7 +28,7 @@ const WhoUsesSection = () => {
     {
       icon: FiMapPin,
       title: 'Film Commissions',
-      description: 'Regional agencies promoting local production incentives'
+      description: 'Regional Agencies and International Film Commissions promoting local production incentives'
     }
   ];
 
@@ -63,11 +63,9 @@ const WhoUsesSection = () => {
               <div className="w-16 h-16 bg-gradient-to-br from-blue-accent to-blue-500 rounded-2xl flex items-center justify-center mb-6 mx-auto">
                 <SafeIcon icon={user.icon} className="w-8 h-8 text-white" />
               </div>
-              
               <h3 className="text-xl font-semibold mb-4 text-white">
                 {user.title}
               </h3>
-              
               <p className="text-gray-300 leading-relaxed">
                 {user.description}
               </p>
@@ -82,7 +80,7 @@ const WhoUsesSection = () => {
           className="text-center mt-16"
         >
           <p className="text-lg text-gray-300 mb-8">
-            Join thousands of industry professionals already using NuPitch
+            Join the hundreds of industry professionals we've spoken with—who are actively shaping the future of NuPitch Rebate.
           </p>
           <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
             {/* Placeholder for company logos */}

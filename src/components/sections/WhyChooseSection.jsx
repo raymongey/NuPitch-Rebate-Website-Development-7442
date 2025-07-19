@@ -38,7 +38,7 @@ const WhyChooseSection = () => {
     {
       icon: FiShield,
       title: 'Privacy & Security First',
-      description: 'Enterprise-grade security with GDPR compliance and end-to-end encryption. Your sensitive production data is always protected.'
+      description: 'Enterprise-grade security with GDPR compliance. Your sensitive data is always protected.'
     }
   ];
 
@@ -69,15 +69,12 @@ const WhyChooseSection = () => {
               <div className="w-16 h-16 bg-gradient-to-br from-blue-accent to-blue-500 rounded-2xl flex items-center justify-center mb-6">
                 <SafeIcon icon={benefit.icon} className="w-8 h-8 text-white" />
               </div>
-              
               <h3 className="text-xl font-semibold mb-4 text-white">
                 {benefit.title}
               </h3>
-              
               <p className="text-gray-300 leading-relaxed">
                 {benefit.description}
               </p>
-
               <motion.div
                 initial={{ scaleX: 0 }}
                 animate={isInView ? { scaleX: 1 } : {}}
