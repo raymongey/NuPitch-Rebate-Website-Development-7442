@@ -2,7 +2,6 @@ import React, {useState, useRef} from 'react';
 import {motion, useInView} from 'framer-motion';
 import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../../common/SafeIcon';
-import {sendEmail} from '../../services/emailService';
 
 const {FiMail, FiUser, FiBriefcase, FiMessageCircle, FiCheck} = FiIcons;
 
@@ -37,33 +36,32 @@ const ContactSection = () => {
     setError('');
     
     try {
-      // Create the email content
-      const emailData = {
-        to: 'info@usenupitch.com',
-        subject: `New Contact Form Submission - ${formData.name}`,
-        body: `
-New Contact Form Submission:
-Name: ${formData.name}
-Email: ${formData.email}
-Company: ${formData.company || 'Not provided'}
-Message: ${formData.message}
-Submitted on: ${new Date().toLocaleString()}
-        `.trim()
-      };
-
-      // Send the email using our service
-      await sendEmail(emailData);
-      
-      // Show success message
-      setIsSubmitted(true);
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        message: '',
+      const response = await fetch('https://formspree.io/f/mjkogkle', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          message: formData.message,
+          _subject: `New Contact Form Submission - ${formData.name}`,
+          _replyto: formData.email,
+        }),
       });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          message: '',
+        });
+      } else {
+        throw new Error('Failed to send message');
+      }
     } catch (error) {
       console.error('Error submitting form:', error);
       setError('Failed to send your message. Please try again later.');
@@ -116,6 +114,8 @@ Submitted on: ${new Date().toLocaleString()}
           initial={{opacity: 0, y: 30}}
           animate={isInView ? {opacity: 1, y: 0} : {}}
           transition={{duration: 0.8, delay: 0.2}}
+          action="https://formspree.io/f/mjkogkle"
+          method="POST"
           onSubmit={handleSubmit}
           className="bg-black/50 backdrop-blur-lg p-8 rounded-2xl border border-gray-700"
         >
@@ -124,6 +124,11 @@ Submitted on: ${new Date().toLocaleString()}
               {error}
             </div>
           )}
+          
+          {/* Hidden fields for Formspree */}
+          <input type="hidden" name="_subject" value={`New Contact Form Submission - ${formData.name}`} />
+          <input type="hidden" name="_replyto" value={formData.email} />
+          <input type="hidden" name="form_type" value="contact" />
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div>

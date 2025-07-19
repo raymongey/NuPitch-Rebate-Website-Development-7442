@@ -2,7 +2,6 @@ import React, {useState, useRef} from 'react';
 import {motion, useInView} from 'framer-motion';
 import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../../common/SafeIcon';
-import {sendEmail} from '../../services/emailService';
 
 const {FiMail, FiUser, FiBriefcase, FiGlobe, FiLink, FiMessageCircle, FiCheck} = FiIcons;
 
@@ -43,39 +42,38 @@ const WaitlistSection = () => {
     setError('');
     
     try {
-      // Create the email content
-      const emailData = {
-        to: 'info@usenupitch.com',
-        subject: `New Waitlist Signup - ${formData.name}`,
-        body: `
-New Waitlist Signup:
-Name: ${formData.name}
-Company: ${formData.company || 'Not provided'}
-Email: ${formData.email}
-Country: ${formData.country || 'Not provided'}
-Website: ${formData.website || 'Not provided'}
-Message: ${formData.message || 'No message'}
-Consent to contact: ${formData.consent ? 'Yes' : 'No'}
-Submitted on: ${new Date().toLocaleString()}
-        `.trim()
-      };
-
-      // Send the email using our service
-      await sendEmail(emailData);
-      
-      // Show success message
-      setIsSubmitted(true);
-      
-      // Reset form
-      setFormData({
-        name: '',
-        company: '',
-        email: '',
-        country: '',
-        website: '',
-        message: '',
-        consent: false
+      const response = await fetch('https://formspree.io/f/mjkogkle', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          country: formData.country,
+          website: formData.website,
+          message: formData.message,
+          consent: formData.consent ? 'Yes' : 'No',
+          _subject: `New Waitlist Signup - ${formData.name}`,
+          _replyto: formData.email,
+        }),
       });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({
+          name: '',
+          company: '',
+          email: '',
+          country: '',
+          website: '',
+          message: '',
+          consent: false
+        });
+      } else {
+        throw new Error('Failed to submit waitlist request');
+      }
     } catch (error) {
       console.error('Error submitting form:', error);
       setError('Failed to submit your waitlist request. Please try again later.');
@@ -128,6 +126,8 @@ Submitted on: ${new Date().toLocaleString()}
           initial={{opacity: 0, y: 30}}
           animate={isInView ? {opacity: 1, y: 0} : {}}
           transition={{duration: 0.8, delay: 0.2}}
+          action="https://formspree.io/f/mjkogkle"
+          method="POST"
           onSubmit={handleSubmit}
           className="bg-navy/50 backdrop-blur-lg p-8 rounded-2xl border border-gray-700"
         >
@@ -136,6 +136,11 @@ Submitted on: ${new Date().toLocaleString()}
               {error}
             </div>
           )}
+          
+          {/* Hidden fields for Formspree */}
+          <input type="hidden" name="_subject" value={`New Waitlist Signup - ${formData.name}`} />
+          <input type="hidden" name="_replyto" value={formData.email} />
+          <input type="hidden" name="form_type" value="waitlist" />
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div>
