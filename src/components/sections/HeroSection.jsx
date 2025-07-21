@@ -53,7 +53,7 @@ const HeroSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           {/* Video Section - Will appear above text in mobile view */}
-          <motion.div 
+          <motion.div
             initial={{opacity: 0, scale: 0.9}}
             animate={{opacity: 1, scale: 1}}
             transition={{duration: 0.8, delay: 0.3}}
@@ -65,7 +65,7 @@ const HeroSection = () => {
                 src="https://www.youtube.com/embed/P4SaNbV7gVU?si=HpgQdhECXCNpRGHT"
                 title="YouTube video player"
                 frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
               ></iframe>
@@ -124,9 +124,12 @@ const HeroSection = () => {
           {[
             {value: '50%', label: 'Faster Funding'},
             {value: '40%', label: 'More Recovery'},
-            {value: '120+', label: 'Countries Supported'},
+            {value: '100+', label: 'Countries Supported'},
           ].map((stat, index) => (
-            <motion.div key={index} whileHover={{scale: 1.05}} className="text-center">
+            <motion.div
+              key={index}
+              whileHover={{scale: 1.05}}
+              className="text-center">
               <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">
                 {stat.value}
               </div>
