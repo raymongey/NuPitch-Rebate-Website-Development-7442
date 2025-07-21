@@ -1,13 +1,13 @@
-import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React, {useRef} from 'react';
+import {motion, useInView} from 'framer-motion';
 import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../../common/SafeIcon';
 
-const { FiVideo, FiMonitor, FiBookOpen, FiMapPin } = FiIcons;
+const {FiVideo, FiMonitor, FiBookOpen, FiMapPin} = FiIcons;
 
 const WhoUsesSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, threshold: 0.1 });
+  const isInView = useInView(ref, {once: true, threshold: 0.1});
 
   const users = [
     {
@@ -37,9 +37,9 @@ const WhoUsesSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          initial={{opacity: 0, y: 30}}
+          animate={isInView ? {opacity: 1, y: 0} : {}}
+          transition={{duration: 0.8}}
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
@@ -54,10 +54,10 @@ const WhoUsesSection = () => {
           {users.map((user, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              whileHover={{ scale: 1.05, y: -5 }}
+              initial={{opacity: 0, scale: 0.9}}
+              animate={isInView ? {opacity: 1, scale: 1} : {}}
+              transition={{duration: 0.8, delay: index * 0.1}}
+              whileHover={{scale: 1.05, y: -5}}
               className="bg-black/50 backdrop-blur-lg p-8 rounded-2xl border border-gray-700 text-center"
             >
               <div className="w-16 h-16 bg-gradient-to-br from-blue-accent to-blue-500 rounded-2xl flex items-center justify-center mb-6 mx-auto">
@@ -74,22 +74,14 @@ const WhoUsesSection = () => {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          initial={{opacity: 0, y: 30}}
+          animate={isInView ? {opacity: 1, y: 0} : {}}
+          transition={{duration: 0.8, delay: 0.5}}
           className="text-center mt-16"
         >
-          <p className="text-lg text-gray-300 mb-8">
+          <p className="text-lg text-gray-300">
             Join the hundreds of industry professionals we've spoken with—who are actively shaping the future of NuPitch Rebate.
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-            {/* Placeholder for company logos */}
-            {[1, 2, 3, 4, 5].map((i) => (
-              <div key={i} className="w-32 h-16 bg-gray-700 rounded-lg flex items-center justify-center">
-                <span className="text-gray-500 text-sm">Studio {i}</span>
-              </div>
-            ))}
-          </div>
         </motion.div>
       </div>
     </section>

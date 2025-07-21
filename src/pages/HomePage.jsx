@@ -1,7 +1,8 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import {motion} from 'framer-motion';
 import HeroSection from '../components/sections/HeroSection';
 import TransformSection from '../components/sections/TransformSection';
+import PartnersSection from '../components/sections/PartnersSection';
 import WhyChooseSection from '../components/sections/WhyChooseSection';
 import HowItWorksSection from '../components/sections/HowItWorksSection';
 import WhoUsesSection from '../components/sections/WhoUsesSection';
@@ -17,13 +18,14 @@ import ContactSection from '../components/sections/ContactSection';
 const HomePage = () => {
   return (
     <motion.main
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      exit={{opacity: 0}}
       className="overflow-hidden"
     >
       <HeroSection />
       <TransformSection />
+      <PartnersSection />
       <WhyChooseSection />
       <HowItWorksSection />
       <WhoUsesSection />

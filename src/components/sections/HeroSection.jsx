@@ -52,42 +52,59 @@ const HeroSection = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-          {/* Left Side - Content */}
+          {/* Video Section - Will appear above text in mobile view */}
           <motion.div 
-            initial={{opacity: 0, y: 30}} 
-            animate={{opacity: 1, y: 0}} 
+            initial={{opacity: 0, scale: 0.9}}
+            animate={{opacity: 1, scale: 1}}
+            transition={{duration: 0.8, delay: 0.3}}
+            className="relative aspect-video w-full max-w-full rounded-xl overflow-hidden shadow-2xl border border-gray-700 lg:order-2 order-1"
+          >
+            <div className="aspect-video relative w-full">
+              <iframe
+                className="absolute top-0 left-0 w-full h-full"
+                src="https://www.youtube.com/embed/P4SaNbV7gVU?si=HpgQdhECXCNpRGHT"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </motion.div>
+
+          {/* Content Section - Will appear below video in mobile view */}
+          <motion.div
+            initial={{opacity: 0, y: 30}}
+            animate={{opacity: 1, y: 0}}
             transition={{duration: 0.8}}
-            className="text-left"
+            className="text-left lg:order-1 order-2"
           >
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight">
               <span className="text-white">Unlock Global Film & TV <br />Incentives with </span>
               <span className="gradient-text">NuPitch Rebate</span>
             </h1>
-            
-            <motion.p 
-              initial={{opacity: 0, y: 20}} 
-              animate={{opacity: 1, y: 0}} 
-              transition={{duration: 0.8, delay: 0.2}} 
+            <motion.p
+              initial={{opacity: 0, y: 20}}
+              animate={{opacity: 1, y: 0}}
+              transition={{duration: 0.8, delay: 0.2}}
               className="text-xl md:text-2xl text-gray-300 mb-8"
             >
               Seamless Rebate Automation. Faster Funding. Zero Compliance Headaches.
             </motion.p>
-            
-            <motion.div 
-              initial={{opacity: 0, y: 20}} 
-              animate={{opacity: 1, y: 0}} 
-              transition={{duration: 0.8, delay: 0.4}} 
+            <motion.div
+              initial={{opacity: 0, y: 20}}
+              animate={{opacity: 1, y: 0}}
+              transition={{duration: 0.8, delay: 0.4}}
               className="flex flex-col sm:flex-row gap-4 items-start"
             >
-              <button 
-                onClick={scrollToWaitlist} 
+              <button
+                onClick={scrollToWaitlist}
                 className="btn-primary px-8 py-4 rounded-full font-semibold text-lg flex items-center space-x-2"
               >
                 <span>Join Waitlist</span>
               </button>
-              
-              <button 
-                onClick={scrollToDemo} 
+              <button
+                onClick={scrollToDemo}
                 className="btn-secondary px-8 py-4 rounded-full font-semibold text-lg flex items-center space-x-2"
               >
                 <SafeIcon icon={FiPlay} className="w-5 h-5" />
@@ -95,33 +112,13 @@ const HeroSection = () => {
               </button>
             </motion.div>
           </motion.div>
-          
-          {/* Right Side - Video */}
-          <motion.div 
-            initial={{opacity: 0, scale: 0.9}} 
-            animate={{opacity: 1, scale: 1}} 
-            transition={{duration: 0.8, delay: 0.3}}
-            className="relative aspect-video w-full max-w-full rounded-xl overflow-hidden shadow-2xl border border-gray-700"
-          >
-            <div className="aspect-video relative w-full">
-              <iframe 
-                className="absolute top-0 left-0 w-full h-full"
-                src="https://www.youtube.com/embed/P4SaNbV7gVU?si=HpgQdhECXCNpRGHT" 
-                title="YouTube video player" 
-                frameBorder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                referrerPolicy="strict-origin-when-cross-origin" 
-                allowFullScreen
-              ></iframe>
-            </div>
-          </motion.div>
         </div>
 
         {/* Stats Section */}
-        <motion.div 
-          initial={{opacity: 0}} 
-          animate={{opacity: 1}} 
-          transition={{duration: 0.8, delay: 0.6}} 
+        <motion.div
+          initial={{opacity: 0}}
+          animate={{opacity: 1}}
+          transition={{duration: 0.8, delay: 0.6}}
           className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
         >
           {[
@@ -129,11 +126,7 @@ const HeroSection = () => {
             {value: '40%', label: 'More Recovery'},
             {value: '120+', label: 'Countries Supported'},
           ].map((stat, index) => (
-            <motion.div 
-              key={index} 
-              whileHover={{scale: 1.05}} 
-              className="text-center"
-            >
+            <motion.div key={index} whileHover={{scale: 1.05}} className="text-center">
               <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">
                 {stat.value}
               </div>
