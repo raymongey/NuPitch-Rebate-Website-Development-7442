@@ -20,21 +20,23 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Correct menu order as requested
   const menuItems = [
-    {name: 'Home', href: '#home'},
     {name: 'How It Works', href: '#how-it-works'},
-    {name: 'Features', href: '#features'},
     {name: 'Who Uses It', href: '#who-uses'},
+    {name: 'Features', href: '#features'},
     {name: 'FAQs', href: '#faqs'},
     {name: 'About', href: '#about'},
     {name: 'Contact', href: '#contact'},
   ];
 
   const scrollToSection = (href) => {
-    // If we're not on the home page, navigate to home first
+    // Close mobile menu first
+    setIsMenuOpen(false);
+    
+    // Handle navigation and scrolling
     if (location.pathname !== '/') {
       navigate('/');
-      // Wait for navigation to complete, then scroll
       setTimeout(() => {
         const element = document.querySelector(href);
         if (element) {
@@ -44,27 +46,26 @@ const Header = () => {
     } else {
       const element = document.querySelector(href);
       if (element) {
-        element.scrollIntoView({behavior: 'smooth'});
+        setTimeout(() => {
+          element.scrollIntoView({behavior: 'smooth'});
+        }, 100);
       }
     }
-    setIsMenuOpen(false);
   };
 
-  const scrollToDemo = () => {
-    // Navigate to home if not already there
+  const handleLogoClick = () => {
+    // Close mobile menu if open
+    setIsMenuOpen(false);
+    
+    // If not on homepage, navigate to homepage
     if (location.pathname !== '/') {
       navigate('/');
       setTimeout(() => {
-        const element = document.querySelector('#demo');
-        if (element) {
-          element.scrollIntoView({behavior: 'smooth'});
-        }
+        window.scrollTo({top: 0, behavior: 'smooth'});
       }, 100);
     } else {
-      const element = document.querySelector('#demo');
-      if (element) {
-        element.scrollIntoView({behavior: 'smooth'});
-      }
+      // If already on homepage, scroll to top
+      window.scrollTo({top: 0, behavior: 'smooth'});
     }
   };
 
@@ -79,14 +80,17 @@ const Header = () => {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <img 
+          <button
+            onClick={handleLogoClick}
+            className="flex items-center space-x-2 hover:opacity-80 transition-opacity duration-200"
+          >
+            <img
               src="https://github.com/raymongey/NuPitch-Rebate-Website-Development-7442/blob/a5301c25e15c169611beca5b90b7d228dcd329f0/public/nupitch_logo_ol-Centered_001.png?raw=true"
               alt="NuPitch"
               className="w-10 h-10 object-contain"
             />
             <span className="font-bold text-xl text-white">NuPitch</span>
-          </Link>
+          </button>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
@@ -115,6 +119,7 @@ const Header = () => {
           <button
             className="md:hidden text-white"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
           >
             <SafeIcon icon={isMenuOpen ? FiX : FiMenu} className="w-6 h-6" />
           </button>
