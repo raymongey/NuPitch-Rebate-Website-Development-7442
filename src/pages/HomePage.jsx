@@ -1,6 +1,7 @@
 import React from 'react';
 import {motion} from 'framer-motion';
 import HeroSection from '../components/sections/HeroSection';
+import ValuePropositionSection from '../components/sections/ValuePropositionSection';
 import TransformSection from '../components/sections/TransformSection';
 import PartnersSection from '../components/sections/PartnersSection';
 import WhyChooseSection from '../components/sections/WhyChooseSection';
@@ -24,6 +25,7 @@ const HomePage = () => {
       className="overflow-hidden"
     >
       <HeroSection />
+      <ValuePropositionSection />
       <TransformSection />
       <PartnersSection />
       <WhyChooseSection />
