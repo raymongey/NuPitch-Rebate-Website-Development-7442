@@ -62,7 +62,7 @@ const HeroSection = () => {
             <div className="aspect-video relative w-full">
               <iframe
                 className="absolute top-0 left-0 w-full h-full"
-                src="https://www.youtube.com/embed/QCaQ2BrjEnU?si=SwbhcIPaFUZY95y_"
+                src="https://www.youtube.com/embed/LNMuXOhhu-U?si=9oJFbyavzGByUIPD"
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share"
